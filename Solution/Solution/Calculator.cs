@@ -6,8 +6,28 @@ using System.Threading.Tasks;
 
 namespace Solution
 {
-    class Calculator
+    public interface AdvancedArithmetic
     {
+        int divisorSum(int n);
+    }
+
+    class Calculator : AdvancedArithmetic
+    {
+
+        public int divisorSum(int n)
+        {
+            int result = 0;
+
+            for (int i = n; i > 0; i--)
+            {
+                if (n % i == 0)
+                {
+                    result += i;
+                }
+            }
+
+            return result;
+        }
 
         public int power(int n, int p)
         {

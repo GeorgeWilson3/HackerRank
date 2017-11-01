@@ -11,7 +11,19 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day18();
+            Day19();
+        }
+
+
+
+        // https://www.hackerrank.com/challenges/30-interfaces/problem
+        static void Day19()
+        {
+            int n = Int32.Parse(Console.ReadLine());
+            AdvancedArithmetic myCalculator = new Calculator();
+            int sum = myCalculator.divisorSum(n);
+            Console.WriteLine("I implemented: AdvancedArithmetic\n" + sum);
+
         }
 
         // https://www.hackerrank.com/challenges/30-queues-stacks/problem
