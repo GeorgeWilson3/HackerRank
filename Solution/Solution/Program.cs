@@ -11,10 +11,55 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day19();
+            Day20();
         }
 
+        // https://www.hackerrank.com/domains/tutorials/30-days-of-code/3
+        static void Day20()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] a_temp = Console.ReadLine().Split(' ');
+            int[] a = Array.ConvertAll(a_temp, Int32.Parse);
+            // Write Your Code Here
 
+            int totalSwaps = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                // Track number of elements swapped during a single array traversal
+                int numberOfSwaps = 0;                
+
+                for (int j = 0; j < n - 1; j++)
+                {
+                    // Swap adjacent elements if they are in decreasing order
+                    if (a[j] > a[j + 1])
+                    {
+                        // swap(a[j], a[j + 1]);
+                        int temp = a[j];
+                        a[j] = a[j + 1];
+                        a[j + 1] = temp;
+                        numberOfSwaps++;
+                        totalSwaps++;
+                    }
+                }
+
+                // If no elements were swapped during a traversal, array is sorted
+                if (numberOfSwaps == 0)
+                {
+                    break;
+                }                
+            }
+            Console.WriteLine(string.Format("Array is sorted in {0} swaps.", totalSwaps));
+            Console.WriteLine("First Element: " + a[0]);
+            Console.WriteLine("Last Element: " + a[n - 1]);
+        }
+
+        static void swap(int j, int j1)
+        {
+            int tempVal = j;
+            j = j1;
+            j1 = tempVal;
+        }
 
         // https://www.hackerrank.com/challenges/30-interfaces/problem
         static void Day19()
