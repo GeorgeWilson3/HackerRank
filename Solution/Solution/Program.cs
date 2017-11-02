@@ -11,8 +11,39 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day20();
+            Day21();
         }
+
+        // https://www.hackerrank.com/challenges/30-generics/problem
+        static void Day21()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] intArray = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                intArray[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            n = Convert.ToInt32(Console.ReadLine());
+            string[] stringArray = new string[n];
+            for (int i = 0; i < n; i++)
+            {
+                stringArray[i] = Console.ReadLine();
+            }
+
+            PrintArray<Int32>(intArray);
+            PrintArray<String>(stringArray);
+        }
+
+        static public void PrintArray<T>(T[] toPrint)
+        {
+            foreach (var item in toPrint)
+            {
+                Console.WriteLine(item);
+            }
+            
+        }
+
 
         // https://www.hackerrank.com/domains/tutorials/30-days-of-code/3
         static void Day20()
