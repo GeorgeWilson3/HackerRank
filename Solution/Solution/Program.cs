@@ -11,8 +11,61 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day21();
+            Day22();
         }
+
+
+        // https://www.hackerrank.com/challenges/30-binary-search-trees/problem
+        static void Day22()
+        {
+            Node root = null;
+            int T = Int32.Parse(Console.ReadLine());
+            while (T-- > 0)
+            {
+                int data = Int32.Parse(Console.ReadLine());
+                root = insert(root, data);
+            }
+            int height = getHeight(root);
+            Console.WriteLine(height);
+
+        }
+
+        static int getHeight(Node root)
+        {
+            if (root == null)
+            {
+                return -1;
+            }
+
+            return Math.Max(1 + getHeight(root.left), 1 + getHeight(root.right));
+        }
+
+        static Node insert(Node root, int data)
+        {
+            if (root == null)
+            {
+                return new Node(data);
+            }
+            else
+            {
+                Node cur;
+                if (data <= root.data)
+                {
+                    cur = insert(root.left, data);
+                    root.left = cur;
+                }
+                else
+                {
+                    cur = insert(root.right, data);
+                    root.right = cur;
+                }
+                return root;
+            }
+        }
+
+
+
+
 
         // https://www.hackerrank.com/challenges/30-generics/problem
         static void Day21()
@@ -40,8 +93,7 @@ namespace Solution
             foreach (var item in toPrint)
             {
                 Console.WriteLine(item);
-            }
-            
+            }            
         }
 
 
@@ -281,33 +333,33 @@ namespace Solution
         }
 
         // https://www.hackerrank.com/challenges/30-linked-list
-        public static void display(Node head)
-        {
-            Node start = head;
-            while (start != null)
-            {
-                Console.Write(start.data + " ");
-                start = start.next;
-            }
-        }
-        public static Node insert(Node head, int data)
-        {
-            //Complete this method
-            if (head == null)
-                return new Node(data);
-            else if (head.next == null)
-            {
-                head.next = new Node(data);
-            }
-            else
-            {
-                insert(head.next, data);
-            }
+        //public static void display(Node head)
+        //{
+        //    Node start = head;
+        //    while (start != null)
+        //    {
+        //        Console.Write(start.data + " ");
+        //        start = start.next;
+        //    }
+        //}
+        //public static Node insert(Node head, int data)
+        //{
+        //    //Complete this method
+        //    if (head == null)
+        //        return new Node(data);
+        //    else if (head.next == null)
+        //    {
+        //        head.next = new Node(data);
+        //    }
+        //    else
+        //    {
+        //        insert(head.next, data);
+        //    }
 
 
-            return head;
+        //    return head;
 
-        }
+        //}
 
         static void Day15()
         {
