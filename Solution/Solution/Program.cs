@@ -11,12 +11,11 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day22();
+            Day23();
         }
 
-
-        // https://www.hackerrank.com/challenges/30-binary-search-trees/problem
-        static void Day22()
+        // https://www.hackerrank.com/challenges/30-binary-trees/problem
+        static void Day23()
         {
             Node root = null;
             int T = Int32.Parse(Console.ReadLine());
@@ -25,19 +24,8 @@ namespace Solution
                 int data = Int32.Parse(Console.ReadLine());
                 root = insert(root, data);
             }
-            int height = getHeight(root);
-            Console.WriteLine(height);
+            levelOrder(root);
 
-        }
-
-        static int getHeight(Node root)
-        {
-            if (root == null)
-            {
-                return -1;
-            }
-
-            return Math.Max(1 + getHeight(root.left), 1 + getHeight(root.right));
         }
 
         static Node insert(Node root, int data)
@@ -62,6 +50,83 @@ namespace Solution
                 return root;
             }
         }
+
+        static void levelOrder(Node root)
+        {
+            //Write your code here
+            Queue<Node> nodes = new Queue<Node>();
+            nodes.Enqueue(root);
+
+            while (nodes.Count > 0)
+            {
+                Node current = nodes.Dequeue();
+                Console.WriteLine(current.data + " ");
+
+                if (current.left != null)
+                {
+                    nodes.Enqueue(current.left);
+                }
+                if (current.right != null)
+                {
+                    nodes.Enqueue(current.right);
+                }
+            }
+
+
+           
+
+
+
+        }
+
+
+        // https://www.hackerrank.com/challenges/30-binary-search-trees/problem
+        static void Day22()
+        {
+            //Node root = null;
+            //int T = Int32.Parse(Console.ReadLine());
+            //while (T-- > 0)
+            //{
+            //    int data = Int32.Parse(Console.ReadLine());
+            //    root = insert(root, data);
+            //}
+            //int height = getHeight(root);
+            //Console.WriteLine(height);
+
+        }
+
+        //static int getHeight(Node root)
+        //{
+        //    if (root == null)
+        //    {
+        //        return -1;
+        //    }
+
+        //    return Math.Max(1 + getHeight(root.left), 1 + getHeight(root.right));
+        //}
+
+        //static Node insert(Node root, int data)
+        //{
+        //    if (root == null)
+        //    {
+        //        return new Node(data);
+        //    }
+        //    else
+        //    {
+        //        Node cur;
+        //        if (data <= root.data)
+        //        {
+        //            cur = insert(root.left, data);
+        //            root.left = cur;
+        //        }
+        //        else
+        //        {
+        //            cur = insert(root.right, data);
+        //            root.right = cur;
+        //        }
+        //        return root;
+        //    }
+        //}
 
 
 

@@ -10,18 +10,27 @@ namespace Solution
     {
         public Node left, right;
         public int data;
+
         public Node(int data)
         {
             this.data = data;
             left = right = null;
         }
-            //public int data;
-            //public Node next;
-            //public Node(int d)
-            //{
-            //    data = d;
-            //    next = null;
-            //}
+
+        //public Node left, right;
+        //public int data;
+        //public Node(int data)
+        //{
+        //    this.data = data;
+        //    left = right = null;
+        //}
+        //public int data;
+        //public Node next;
+        //public Node(int d)
+        //{
+        //    data = d;
+        //    next = null;
+        //}
 
 
     }
