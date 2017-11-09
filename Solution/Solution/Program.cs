@@ -11,8 +11,53 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day24();
+            Day25();
         }
+
+        // https://www.hackerrank.com/challenges/30-running-time-and-complexity/problem
+        static void Day25()
+        {
+            int T = Int32.Parse(Console.ReadLine());
+
+            while (T-- > 0)
+            {
+                if(isPrime(Int32.Parse(Console.ReadLine())))
+                {
+                    Console.WriteLine("Prime");
+                }
+                else
+                {
+                    Console.WriteLine("Not prime");
+                }
+            }
+        }
+
+        static bool isPrime(int n)
+        {
+            if (n <= 1)
+            {
+                return false;
+            }
+            if (n <= 3)
+            {
+                return true;
+            }
+            if (n % 2 == 0 || n % 3 == 0)
+            {
+                return false;
+            }
+
+            int root = (int)Math.Sqrt(n);
+            for (int i = 5; i * 1 <= root - 1; i++)
+            {
+                if (n % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
 
         // https://www.hackerrank.com/challenges/30-linked-list-deletion/problem
         static void Day24()
