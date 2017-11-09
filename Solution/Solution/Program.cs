@@ -56,11 +56,12 @@ namespace Solution
             //Write your code here
             Queue<Node> nodes = new Queue<Node>();
             nodes.Enqueue(root);
+            string output = "";
 
             while (nodes.Count > 0)
             {
                 Node current = nodes.Dequeue();
-                Console.WriteLine(current.data + " ");
+                output += current.data + " ";                
 
                 if (current.left != null)
                 {
@@ -72,8 +73,8 @@ namespace Solution
                 }
             }
 
+            Console.WriteLine(output);
 
-           
 
 
 
