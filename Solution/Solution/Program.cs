@@ -11,74 +11,162 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day23();
+            Day24();
         }
 
-        // https://www.hackerrank.com/challenges/30-binary-trees/problem
-        static void Day23()
+        // https://www.hackerrank.com/challenges/30-linked-list-deletion/problem
+        static void Day24()
         {
-            Node root = null;
+            Node head = null;
             int T = Int32.Parse(Console.ReadLine());
             while (T-- > 0)
             {
                 int data = Int32.Parse(Console.ReadLine());
-                root = insert(root, data);
+                head = insert(head, data);
             }
-            levelOrder(root);
-
+            head = removeDuplicates(head);
+            display(head);
         }
 
-        static Node insert(Node root, int data)
+        public static Node removeDuplicates(Node head)
         {
-            if (root == null)
+            //Write your code here
+
+            if (head == null || head.next == null)
             {
-                return new Node(data);
+                return head;
+            }
+            if (head.data == head.next.data)
+            {
+                head.next = head.next.next;
+                removeDuplicates(head);
             }
             else
             {
-                Node cur;
-                if (data <= root.data)
-                {
-                    cur = insert(root.left, data);
-                    root.left = cur;
-                }
-                else
-                {
-                    cur = insert(root.right, data);
-                    root.right = cur;
-                }
-                return root;
+                removeDuplicates(head.next);
             }
+            return head;
+
+            //Node node = new Node(head.data);
+            ////Node node = new Node(head.data);
+
+            //bool removed = false;
+
+            //while (head != null)
+            //{
+            //    if (head.data == head.next.data)
+            //    {
+
+            //    }
+            //}
+
+            //do
+            //{
+
+            //    if (node.data == node.next.data)
+            //    {
+            //        node.next = null;
+
+            //    }
+            //    node = node.next;
+
+            //}
+            //while (removed);
+
+            //return node;
         }
 
-        static void levelOrder(Node root)
+        public static Node insert(Node head, int data)
         {
-            //Write your code here
-            Queue<Node> nodes = new Queue<Node>();
-            nodes.Enqueue(root);
-            string output = "";
+            Node p = new Node(data);
 
-            while (nodes.Count > 0)
+
+            if (head == null)
+                head = p;
+            else if (head.next == null)
+                head.next = p;
+            else
             {
-                Node current = nodes.Dequeue();
-                output += current.data + " ";                
+                Node start = head;
+                while (start.next != null)
+                    start = start.next;
+                start.next = p;
 
-                if (current.left != null)
-                {
-                    nodes.Enqueue(current.left);
-                }
-                if (current.right != null)
-                {
-                    nodes.Enqueue(current.right);
-                }
             }
-
-            Console.WriteLine(output);
-
-
-
-
+            return head;
         }
+        public static void display(Node head)
+        {
+            Node start = head;
+            while (start != null)
+            {
+                Console.Write(start.data + " ");
+                start = start.next;
+            }
+        }
+
+
+        //// https://www.hackerrank.com/challenges/30-binary-trees/problem
+        //static void Day23()
+        //{
+        //    Node root = null;
+        //    int T = Int32.Parse(Console.ReadLine());
+        //    while (T-- > 0)
+        //    {
+        //        int data = Int32.Parse(Console.ReadLine());
+        //        root = insert(root, data);
+        //    }
+        //    levelOrder(root);
+
+        //}
+
+        //static Node insert(Node root, int data)
+        //{
+        //    if (root == null)
+        //    {
+        //        return new Node(data);
+        //    }
+        //    else
+        //    {
+        //        Node cur;
+        //        if (data <= root.data)
+        //        {
+        //            cur = insert(root.left, data);
+        //            root.left = cur;
+        //        }
+        //        else
+        //        {
+        //            cur = insert(root.right, data);
+        //            root.right = cur;
+        //        }
+        //        return root;
+        //    }
+        //}
+
+        //static void levelOrder(Node root)
+        //{
+        //    //Write your code here
+        //    Queue<Node> nodes = new Queue<Node>();
+        //    nodes.Enqueue(root);
+        //    string output = "";
+
+        //    while (nodes.Count > 0)
+        //    {
+        //        Node current = nodes.Dequeue();
+        //        output += current.data + " ";                
+
+        //        if (current.left != null)
+        //        {
+        //            nodes.Enqueue(current.left);
+        //        }
+        //        if (current.right != null)
+        //        {
+        //            nodes.Enqueue(current.right);
+        //        }
+        //    }
+
+        //    Console.WriteLine(output);
+        //}
 
 
         // https://www.hackerrank.com/challenges/30-binary-search-trees/problem

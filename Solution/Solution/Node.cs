@@ -8,13 +8,12 @@ namespace Solution
 {
     class Node
     {
-        public Node left, right;
         public int data;
-
-        public Node(int data)
+        public Node next;
+        public Node(int d)
         {
-            this.data = data;
-            left = right = null;
+            data = d;
+            next = null;
         }
 
         //public Node left, right;
