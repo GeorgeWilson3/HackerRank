@@ -11,7 +11,67 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day25();
+            Day26();
+        }
+
+
+        // https://www.hackerrank.com/challenges/30-nested-logic/problem
+        static void Day26()
+        {
+            string rDate = Console.ReadLine();
+            string dDate = Console.ReadLine();
+            int fine = 0;
+
+            // D = int[0]
+            // M = int[1]
+            // Y = int[2]
+            int[] returnedDate = SplitDate(rDate);
+            int[] dueDate = SplitDate(dDate);
+
+            // Returned after the expected year
+            if (returnedDate[2] > dueDate[2])
+            {
+                fine = 10000;
+            }
+            // Returned same year
+            if (returnedDate[2] < dueDate[2])
+            {
+                fine = 0;
+            }
+            // Returned after the expected month
+            else if (returnedDate[1] > dueDate[1] && returnedDate[2] <= dueDate[2])
+            {
+                fine = 500 * (returnedDate[1] - dueDate[1]);
+            }
+            // Returned in the same month
+            else if (returnedDate[1] == dueDate[1] )
+            {
+                // Returned early
+                if (returnedDate[0] <= dueDate[0] && returnedDate[1] <= dueDate[1] )
+                {
+                    fine = 0;
+                }
+                else
+                {
+                    fine = 15 * (returnedDate[0] - dueDate[0]);
+                }
+            }
+            
+            Console.WriteLine(fine);
+        }
+
+        static private int[] SplitDate(string input)
+        {
+            char[] sep = { ' ' };
+            string[] temp = input.Split(sep);
+            int[] output = new int[temp.Length];
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                output[i] = Int32.Parse(temp[i]);
+            }
+
+            return output;
         }
 
         // https://www.hackerrank.com/challenges/30-running-time-and-complexity/problem
