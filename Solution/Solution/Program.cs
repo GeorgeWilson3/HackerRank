@@ -11,7 +11,119 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            Day25();
+            int N = 6; //  Convert.ToInt32(Console.ReadLine());
+            string[] input = new string[]
+            {
+                "riya riya@gmail.com",
+                "julia julia@julia.me",
+                "julia sjulia@gmail.com",
+                "julia julia@gmail.com",
+                "samantha samantha@gmail.com",
+                "tanya tanya@gmail.com"
+            };
+
+            List<string> lstFirstNames = new List<string>();
+
+            for (int a0 = 0; a0 < N; a0++)
+            {
+                string[] tokens_firstName = input[a0].Split(' '); //  Console.ReadLine().Split(' ');
+                string firstName = tokens_firstName[0];
+                string emailID = tokens_firstName[1];
+
+                if(Regex.IsMatch(emailID, "@gmail.com"))
+                {
+                    lstFirstNames.Add(firstName);
+                }
+            }
+            lstFirstNames.Sort();
+            foreach (var item in lstFirstNames)
+            {
+                Console.WriteLine(item);
+            }
+
+            // Day28();
+        }
+
+        // https://www.hackerrank.com/challenges/30-regex-patterns/problem
+        static void Day28()
+        {
+
+        }
+
+
+        static void Day27()
+        {
+            Console.WriteLine(5);
+            Console.WriteLine("4 3");
+            Console.WriteLine("-1 0 4 2");
+            Console.WriteLine("6 1");
+            Console.WriteLine("-2 -4 -5 0 3 4");
+            Console.WriteLine("5 3");
+            Console.WriteLine("0 -1 5 6 7");
+            Console.WriteLine("3 2");
+            Console.WriteLine("-9 0 10");
+            Console.WriteLine("7 6");
+            Console.WriteLine("-9 -8 -7 0 9 10 11");
+        }
+
+
+        // https://www.hackerrank.com/challenges/30-nested-logic/problem
+        static void Day26()
+        {
+            string rDate = Console.ReadLine();
+            string dDate = Console.ReadLine();
+            int fine = 0;
+
+            // D = int[0]
+            // M = int[1]
+            // Y = int[2]
+            int[] returnedDate = SplitDate(rDate);
+            int[] dueDate = SplitDate(dDate);
+
+            // Returned after the expected year
+            if (returnedDate[2] > dueDate[2])
+            {
+                fine = 10000;
+            }
+            // Returned same year
+            if (returnedDate[2] < dueDate[2])
+            {
+                fine = 0;
+            }
+            // Returned after the expected month
+            else if (returnedDate[1] > dueDate[1] && returnedDate[2] <= dueDate[2])
+            {
+                fine = 500 * (returnedDate[1] - dueDate[1]);
+            }
+            // Returned in the same month
+            else if (returnedDate[1] == dueDate[1] )
+            {
+                // Returned early
+                if (returnedDate[0] <= dueDate[0] && returnedDate[1] <= dueDate[1] )
+                {
+                    fine = 0;
+                }
+                else
+                {
+                    fine = 15 * (returnedDate[0] - dueDate[0]);
+                }
+            }
+            
+            Console.WriteLine(fine);
+        }
+
+        static private int[] SplitDate(string input)
+        {
+            char[] sep = { ' ' };
+            string[] temp = input.Split(sep);
+            int[] output = new int[temp.Length];
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                output[i] = Int32.Parse(temp[i]);
+            }
+
+            return output;
         }
 
         // https://www.hackerrank.com/challenges/30-running-time-and-complexity/problem
