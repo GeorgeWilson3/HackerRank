@@ -11,6 +11,72 @@ namespace Solution
     {
         static void Main(string[] args)
         {
+            ArrayChallenge();
+
+        }
+
+
+        //https://www.hackerrank.com/challenges/arrays-ds/problem
+        static void ArrayChallenge()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            int[] arr = Array.ConvertAll(Console.ReadLine().Split(' '), arrTemp => Convert.ToInt32(arrTemp));
+
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            
+        }
+
+        // https://www.hackerrank.com/challenges/30-bitwise-and/problem
+        static void Day29()
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            for (int a0 = 0; a0 < t; a0++)
+            {
+                string[] tokens_n = Console.ReadLine().Split(' ');
+                int n = Convert.ToInt32(tokens_n[0]);
+                int k = Convert.ToInt32(tokens_n[1]);
+
+                if (((k - 1) | k) > n && k % 2 == 0)
+                {
+                    Console.WriteLine(k - 2);
+                }
+                else
+                {
+                    Console.WriteLine(k - 1);
+                }
+            }
+
+            // BitAnd(n, k);
+        }
+
+
+        static void BitAnd(int t, int k)
+        {
+
+            //int maxValue = 0;
+
+            //for (int i = 1; i < n; i++)
+            //{
+            //    for (int j = (i + 1); j < n; j++)
+            //    {
+            //        int val = i & j;
+            //        if (val < k && val > maxValue)
+            //        {
+            //            maxValue = val;
+            //        }
+
+            //    }
+        //}
+            //Console.WriteLine(maxValue);
+        }
+
+        // https://www.hackerrank.com/challenges/30-regex-patterns/problem
+        static void Day28()
+        {
             int N = 6; //  Convert.ToInt32(Console.ReadLine());
             string[] input = new string[]
             {
@@ -30,7 +96,7 @@ namespace Solution
                 string firstName = tokens_firstName[0];
                 string emailID = tokens_firstName[1];
 
-                if(Regex.IsMatch(emailID, "@gmail.com"))
+                if (Regex.IsMatch(emailID, "@gmail.com"))
                 {
                     lstFirstNames.Add(firstName);
                 }
@@ -42,12 +108,6 @@ namespace Solution
             }
 
             // Day28();
-        }
-
-        // https://www.hackerrank.com/challenges/30-regex-patterns/problem
-        static void Day28()
-        {
-
         }
 
 
