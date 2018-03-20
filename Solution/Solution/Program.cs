@@ -220,7 +220,7 @@ namespace Solution
             }
 
             int root = (int)Math.Sqrt(n);
-            for (int i = 5; i * 1 <= root - 1; i++)
+            for (int i = 5; i * 1 <= root; i++)
             {
                 if (n % i == 0)
                 {
