@@ -11,9 +11,56 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            ArrayChallenge();
-
+            Grade(args);
         }
+
+        // https://www.hackerrank.com/challenges/grading/problem
+
+        static void Grade(string[] args)
+        {
+            //TextWriter tw = new StreamWriter(Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            int[] grades = new int[n];
+
+            for (int gradesItr = 0; gradesItr < n; gradesItr++)
+            {
+                int gradesItem = Convert.ToInt32(Console.ReadLine());
+                grades[gradesItr] = gradesItem;
+            }
+
+            int[] result = gradingStudents(grades);
+
+            //tw.WriteLine(string.Join("\n", result));
+
+            //tw.Flush();
+            //tw.Close();
+        }
+
+        static int[] gradingStudents(int[] grades)
+        {
+            //int[] output = new int[grades.Length];
+
+            for (int cnt = 0; cnt < grades.Length; cnt++)
+            {
+                if (grades[cnt] < 38)
+                {
+                    // Do nothing. You failed.
+                }
+                else if ((grades[cnt] +1) %5 == 0) 
+                {
+                    grades[cnt] = grades[cnt] + 1;
+                }
+                else if ((grades[cnt] + 2) % 5 == 0)
+                {
+                    grades[cnt] = grades[cnt] + 2;
+                }
+            }
+
+            return grades;
+        }
+
 
 
         //https://www.hackerrank.com/challenges/arrays-ds/problem
